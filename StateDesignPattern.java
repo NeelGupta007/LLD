@@ -8,6 +8,9 @@ import java.util.*;
 interface State{
     public void nextState(TrafficLightManager manager);
     public String getColor();
+    public default String ok(){
+        return "ok";
+    }
 }
 
 // concrete states
@@ -71,6 +74,10 @@ class TrafficLightManager{
     public String getColor(){
         return currentState.getColor();
     }
+
+    public String getOk(){
+        return currentState.ok();
+    }
 }
 
 
@@ -91,5 +98,6 @@ class StateDesignPattern{
         System.out.println(manager.getColor());
         manager.changeToNextState();
         System.out.println(manager.getColor());
+        System.out.println(manager.getOk());
     }
 }
