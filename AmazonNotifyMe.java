@@ -9,8 +9,10 @@
 import java.util.*;
 
 interface IObservable {
+    public void notifyAllUsers();
+    public void unnotifyme(User user);
     public void notifyme(User user);
-    public String getUpdate();
+    String getUpdate();
 }
 
 
@@ -31,7 +33,11 @@ class Product implements IObservable{
         this.subscribedUsers.add(user);
     }
 
-    private void notifyAllUsers(){
+    public void unnotifyme(User user){
+        this.subscribedUsers.remove(user);
+    }
+
+    public void notifyAllUsers(){
         for(User user: subscribedUsers) {
             user.sendNotification(this);
         }
@@ -63,7 +69,7 @@ class Product implements IObservable{
 class User{
     String name;
     String email;
-
+    
     INotification notification;
 
     User(String name, String email){
