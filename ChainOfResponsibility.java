@@ -65,8 +65,7 @@ class FiveHundredHandler extends Handler{
             notes -= notesNeeded;
         }
 
-        
-        System.out.println("Dispensing 500 notes: " + notesNeeded);
+        if(notesNeeded > 0) System.out.println("Dispensing 500 notes: " + notesNeeded);
 
         if(notesNeeded * 500 == amount){
             return;
